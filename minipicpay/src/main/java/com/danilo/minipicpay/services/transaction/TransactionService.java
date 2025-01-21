@@ -1,4 +1,4 @@
-package com.danilo.minipicpay.services;
+package com.danilo.minipicpay.services.transaction;
 
 import org.springframework.stereotype.Service;
 
