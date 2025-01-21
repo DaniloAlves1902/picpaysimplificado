@@ -1,4 +1,4 @@
-package com.danilo.minipicpay.entities;
+package com.danilo.minipicpay.entities.user;
 
 import com.danilo.minipicpay.entities.enums.Gender;
 import com.danilo.minipicpay.entities.enums.UserStatus;

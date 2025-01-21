@@ -1,6 +1,6 @@
 package com.danilo.minipicpay.repositories;
 
-import com.danilo.minipicpay.entities.User;
+import com.danilo.minipicpay.entities.user.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

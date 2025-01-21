@@ -1,6 +1,7 @@
-package com.danilo.minipicpay.entities;
+package com.danilo.minipicpay.entities.transaction;
 
 import com.danilo.minipicpay.entities.enums.TransactionStatus;
+import com.danilo.minipicpay.entities.user.User;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
