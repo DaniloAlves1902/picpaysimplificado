@@ -1,12 +1,15 @@
 package com.danilo.minipicpay.services.transaction;
 
 import com.danilo.minipicpay.dtos.TransactionDTO;
+import com.danilo.minipicpay.entities.transaction.Transaction;
 import com.danilo.minipicpay.entities.user.User;
 import com.danilo.minipicpay.exceptions.InvalidSenderException;
 import com.danilo.minipicpay.repositories.TransactionRepository;
 import com.danilo.minipicpay.services.user.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 
 @Service
@@ -36,6 +39,14 @@ public class TransactionService {
         if (senderId.equals(receiverId)) {
             throw new InvalidSenderException("Sender and receiver cannot be the same");
         }
+    }
+
+    public List<Transaction> findAll() {
+        return transactionRepository.findAll();
+    }
+
+    public Transaction findById(Long id) {
+        return transactionRepository.findById(id).orElseThrow(() -> new RuntimeException("Transaction not found"));
     }
 
 }
