@@ -7,19 +7,13 @@ import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+
 
 import java.math.BigDecimal;
 
 @Entity(name = "user")
 @Table(name = "users")
-@Getter
-@Setter
-@NoArgsConstructor
-@AllArgsConstructor
+
 public class User {
 
     @Id
@@ -53,15 +47,136 @@ public class User {
     @NotBlank
     private String nationality;
 
+    @NotNull
     private String address;
 
     @Enumerated(EnumType.STRING)
     private UserStatus userStatus;
 
-    @NotNull
     private BigDecimal balance;
 
     @Enumerated(EnumType.STRING)
     private UserType userType;
 
+    public User(String firstName, String lastName, String document, String email, String password, String phoneNumber, Gender gender, String nationality, String address, UserStatus userStatus, BigDecimal balance, UserType userType) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.document = document;
+        this.email = email;
+        this.password = password;
+        this.phoneNumber = phoneNumber;
+        this.gender = gender;
+        this.nationality = nationality;
+        this.address = address;
+        this.userStatus = userStatus;
+        this.balance = balance;
+        this.userType = userType;
+    }
+
+    public User() {
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public @NotBlank String getFirstName() {
+        return firstName;
+    }
+
+    public void setFirstName(@NotBlank String firstName) {
+        this.firstName = firstName;
+    }
+
+    public @NotBlank String getLastName() {
+        return lastName;
+    }
+
+    public void setLastName(@NotBlank String lastName) {
+        this.lastName = lastName;
+    }
+
+    public @NotBlank String getDocument() {
+        return document;
+    }
+
+    public void setDocument(@NotBlank String document) {
+        this.document = document;
+    }
+
+    public @NotBlank @Email String getEmail() {
+        return email;
+    }
+
+    public void setEmail(@NotBlank @Email String email) {
+        this.email = email;
+    }
+
+    public @NotBlank String getPassword() {
+        return password;
+    }
+
+    public void setPassword(@NotBlank String password) {
+        this.password = password;
+    }
+
+    public @NotBlank String getPhoneNumber() {
+        return phoneNumber;
+    }
+
+    public void setPhoneNumber(@NotBlank String phoneNumber) {
+        this.phoneNumber = phoneNumber;
+    }
+
+    public Gender getGender() {
+        return gender;
+    }
+
+    public void setGender(Gender gender) {
+        this.gender = gender;
+    }
+
+    public @NotBlank String getNationality() {
+        return nationality;
+    }
+
+    public void setNationality(@NotBlank String nationality) {
+        this.nationality = nationality;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public UserStatus getUserStatus() {
+        return userStatus;
+    }
+
+    public void setUserStatus(UserStatus userStatus) {
+        this.userStatus = userStatus;
+    }
+
+    public BigDecimal getBalance() {
+        return balance;
+    }
+
+    public void setBalance(BigDecimal balance) {
+        this.balance = balance;
+    }
+
+    public UserType getUserType() {
+        return userType;
+    }
+
+    public void setUserType(UserType userType) {
+        this.userType = userType;
+    }
 }
