@@ -1,6 +1,9 @@
 package com.danilo.minipicpay.services.user;
 
 import com.danilo.minipicpay.dtos.UserDTO;
+import com.danilo.minipicpay.entities.enums.TransactionStatus;
+import com.danilo.minipicpay.entities.enums.UserStatus;
+import com.danilo.minipicpay.entities.transaction.Transaction;
 import com.danilo.minipicpay.entities.user.User;
 import com.danilo.minipicpay.exceptions.InsufficientBalanceException;
 import com.danilo.minipicpay.exceptions.UserNotFoundException;
@@ -9,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
+import java.util.List;
 
 @Service
 public class UserService {
@@ -27,6 +31,10 @@ public class UserService {
 
     }
 
+    public List<User> findAll() {
+        return userRepository.findAll();
+    }
+
     public User findById(Long id) {
         return userRepository.findById(id).orElseThrow(() -> new UserNotFoundException("User not found"));
     }
@@ -35,25 +43,26 @@ public class UserService {
         return userRepository.findByDocument(document).orElseThrow(() -> new UserNotFoundException("User not found"));
     }
 
-    public User createUser(UserDTO userDTO) {
-        User user = new User();
-        user.setFirstName(userDTO.firstName());
-        user.setLastName(userDTO.lastName());
-        user.setDocument(userDTO.document());
-        user.setEmail(userDTO.email());
-        user.setPhoneNumber(userDTO.phoneNumber());
-        user.setGender(userDTO.gender());
-        user.setNationality(userDTO.nationality());
-        user.setAddress(userDTO.address());
-        user.setUserStatus(userDTO.userStatus());
-        user.setBalance(userDTO.balance());
-        user.setUserType(userDTO.userType());
-
-        return userRepository.save(user);
+    public User createUser(UserDTO dataUser) {
+        User newUser = new User();
+        newUser.setFirstName(dataUser.firstName());
+        newUser.setLastName(dataUser.lastName());
+        newUser.setDocument(dataUser.document());
+        newUser.setEmail(dataUser.email());
+        newUser.setPassword(dataUser.password());
+        newUser.setPhoneNumber(dataUser.phoneNumber());
+        newUser.setGender(dataUser.gender());
+        newUser.setNationality(dataUser.nationality());
+        newUser.setAddress(dataUser.address());
+        newUser.setUserStatus(UserStatus.ACTIVE);
+        newUser.setBalance(BigDecimal.ZERO);
+        newUser.setUserType(dataUser.userType());
+        this.saveUser(newUser);
+        return newUser;
     }
 
-    public void saveUser(User user) {
-        userRepository.save(user);
+    public User saveUser(User user) {
+        return userRepository.save(user);
     }
 
     public void deleteUser(Long id) {

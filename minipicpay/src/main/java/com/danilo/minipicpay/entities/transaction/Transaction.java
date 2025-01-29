@@ -19,13 +19,13 @@ public class Transaction {
 
     @NotNull
     @ManyToOne
-    @JoinColumn(name = "sender_id", nullable = false)
+    @JoinColumn(name = "senderId", nullable = false)
     private User sender;
 
     @NotNull
     @ManyToOne
     @JoinColumn(name = "recive_id", nullable = false)
-    private User recive;
+    private User reciver;
 
     @NotNull
     private BigDecimal amount;
@@ -41,11 +41,14 @@ public class Transaction {
     public Transaction(Long id, User sender, User recive, BigDecimal amount, LocalDateTime timestamp, TransactionStatus status, String description) {
         this.id = id;
         this.sender = sender;
-        this.recive = recive;
+        this.reciver = recive;
         this.amount = amount;
         this.timestamp = timestamp;
         this.status = status;
         this.description = description;
+    }
+
+    public Transaction() {
     }
 
     public Long getId() {
@@ -64,12 +67,12 @@ public class Transaction {
         this.sender = sender;
     }
 
-    public @NotNull User getRecive() {
-        return recive;
+    public @NotNull User getReciver() {
+        return reciver;
     }
 
-    public void setRecive(@NotNull User recive) {
-        this.recive = recive;
+    public void setReciver(@NotNull User reciver) {
+        this.reciver = reciver;
     }
 
     public @NotNull BigDecimal getAmount() {

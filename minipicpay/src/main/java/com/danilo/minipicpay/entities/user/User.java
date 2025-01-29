@@ -1,5 +1,6 @@
 package com.danilo.minipicpay.entities.user;
 
+import com.danilo.minipicpay.dtos.UserDTO;
 import com.danilo.minipicpay.entities.enums.Gender;
 import com.danilo.minipicpay.entities.enums.UserStatus;
 import com.danilo.minipicpay.entities.enums.UserType;
@@ -47,7 +48,6 @@ public class User {
     @NotBlank
     private String nationality;
 
-    @NotNull
     private String address;
 
     @Enumerated(EnumType.STRING)
@@ -74,6 +74,21 @@ public class User {
     }
 
     public User() {
+    }
+
+    public User (UserDTO data){
+        this.firstName = data.firstName();
+        this.lastName = data.lastName();
+        this.document = data.document();
+        this.email = data.email();
+        this.password = data.password();
+        this.phoneNumber = data.phoneNumber();
+        this.gender = data.gender();
+        this.nationality = data.nationality();
+        this.address = data.address();
+        this.balance = data.balance() != null ? data.balance() : BigDecimal.ZERO;
+        this.userStatus = data.userStatus() != null ? data.userStatus() : UserStatus.ACTIVE;
+
     }
 
     public Long getId() {
