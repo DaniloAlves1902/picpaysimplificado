@@ -6,6 +6,8 @@ import com.danilo.minipicpay.entities.enums.UserStatus;
 import com.danilo.minipicpay.entities.transaction.Transaction;
 import com.danilo.minipicpay.entities.user.User;
 import com.danilo.minipicpay.exceptions.InsufficientBalanceException;
+import com.danilo.minipicpay.exceptions.InvalidDepositAmountException;
+import com.danilo.minipicpay.exceptions.InvalidWithdrawAmountException;
 import com.danilo.minipicpay.exceptions.UserNotFoundException;
 import com.danilo.minipicpay.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,6 +31,26 @@ public class UserService {
             throw new UserNotFoundException("User not found");
         }
 
+    }
+
+    public void validationDeposit (User user, BigDecimal value){
+        if (value.compareTo(BigDecimal.ZERO) <= 0){
+            throw new InvalidDepositAmountException("Invalid deposit amount");
+        }
+
+        if(user == null){
+            throw new UserNotFoundException("User not found");
+        }
+    }
+
+    public void validationWithdraw (User user, BigDecimal value){
+        if (value.compareTo(BigDecimal.ZERO) <= 0){
+            throw new InvalidWithdrawAmountException("Invalid withdraw amount");
+        }
+
+        if(user == null){
+            throw new UserNotFoundException("User not found");
+        }
     }
 
     public List<User> findAll() {

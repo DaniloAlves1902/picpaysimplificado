@@ -88,7 +88,6 @@ public class User {
         this.address = data.address();
         this.balance = data.balance() != null ? data.balance() : BigDecimal.ZERO;
         this.userStatus = data.userStatus() != null ? data.userStatus() : UserStatus.ACTIVE;
-
     }
 
     public Long getId() {

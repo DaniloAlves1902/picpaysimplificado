@@ -1,6 +1,6 @@
 package com.danilo.minipicpay.entities.enums;
 
-public enum TransactionStatus {
+public enum WithdrawStatus {
     SUCCESSFUL,
     PENDING,
     FAILED

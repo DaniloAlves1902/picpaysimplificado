@@ -38,8 +38,7 @@ public class Transaction {
 
     private String description;
 
-    public Transaction(Long id, User sender, User recive, BigDecimal amount, LocalDateTime timestamp, TransactionStatus status, String description) {
-        this.id = id;
+    public Transaction(User sender, User recive, BigDecimal amount, LocalDateTime timestamp, TransactionStatus status, String description) {
         this.sender = sender;
         this.reciver = recive;
         this.amount = amount;
