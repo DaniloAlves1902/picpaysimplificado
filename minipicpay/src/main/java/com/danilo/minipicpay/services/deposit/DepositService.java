@@ -4,6 +4,7 @@ import com.danilo.minipicpay.dtos.DepositDTO;
 import com.danilo.minipicpay.entities.deposit.Deposit;
 import com.danilo.minipicpay.entities.enums.DepositStatus;
 import com.danilo.minipicpay.entities.user.User;
+import com.danilo.minipicpay.exceptions.DepositNotFoundException;
 import com.danilo.minipicpay.repositories.DepositRepository;
 import com.danilo.minipicpay.services.user.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -44,6 +45,6 @@ public class DepositService {
     }
 
     public Deposit findById (Long id){
-        return depositRepository.findById(id).orElseThrow(() -> new RuntimeException("Deposit not found"));
+        return depositRepository.findById(id).orElseThrow(() -> new DepositNotFoundException("Deposit not found"));
     }
 }
