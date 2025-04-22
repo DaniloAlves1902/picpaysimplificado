@@ -1,6 +1,5 @@
 package com.danilo.minipicpay.entities.deposit;
 
-import com.danilo.minipicpay.dtos.DepositDTO;
 import com.danilo.minipicpay.entities.enums.DepositForm;
 import com.danilo.minipicpay.entities.enums.DepositStatus;
 import com.danilo.minipicpay.entities.user.User;

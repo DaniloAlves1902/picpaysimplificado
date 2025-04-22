@@ -81,7 +81,6 @@ public class User {
         this.lastName = data.lastName();
         this.document = data.document();
         this.email = data.email();
-        this.password = data.password();
         this.phoneNumber = data.phoneNumber();
         this.gender = data.gender();
         this.nationality = data.nationality();

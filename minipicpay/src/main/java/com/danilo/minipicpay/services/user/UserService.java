@@ -1,9 +1,7 @@
 package com.danilo.minipicpay.services.user;
 
 import com.danilo.minipicpay.dtos.UserDTO;
-import com.danilo.minipicpay.entities.enums.TransactionStatus;
 import com.danilo.minipicpay.entities.enums.UserStatus;
-import com.danilo.minipicpay.entities.transaction.Transaction;
 import com.danilo.minipicpay.entities.user.User;
 import com.danilo.minipicpay.exceptions.InsufficientBalanceException;
 import com.danilo.minipicpay.exceptions.InvalidDepositAmountException;
@@ -33,22 +31,22 @@ public class UserService {
 
     }
 
-    public void validationDeposit (User user, BigDecimal value){
-        if (value.compareTo(BigDecimal.ZERO) <= 0){
+    public void validationDeposit(User user, BigDecimal value) {
+        if (value.compareTo(BigDecimal.ZERO) <= 0) {
             throw new InvalidDepositAmountException("Invalid deposit amount");
         }
 
-        if(user == null){
+        if (user == null) {
             throw new UserNotFoundException("User not found");
         }
     }
 
-    public void validationWithdraw (User user, BigDecimal value){
-        if (value.compareTo(BigDecimal.ZERO) <= 0){
+    public void validationWithdraw(User user, BigDecimal value) {
+        if (value.compareTo(BigDecimal.ZERO) <= 0) {
             throw new InvalidWithdrawAmountException("Invalid withdraw amount");
         }
 
-        if(user == null){
+        if (user == null) {
             throw new UserNotFoundException("User not found");
         }
     }
@@ -71,7 +69,6 @@ public class UserService {
         newUser.setLastName(dataUser.lastName());
         newUser.setDocument(dataUser.document());
         newUser.setEmail(dataUser.email());
-        newUser.setPassword(dataUser.password());
         newUser.setPhoneNumber(dataUser.phoneNumber());
         newUser.setGender(dataUser.gender());
         newUser.setNationality(dataUser.nationality());

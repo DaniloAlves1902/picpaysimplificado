@@ -27,9 +27,6 @@ public record UserDTO(
         String email,
 
         @NotBlank
-        String password,
-
-        @NotBlank
         String phoneNumber,
 
         Gender gender,
