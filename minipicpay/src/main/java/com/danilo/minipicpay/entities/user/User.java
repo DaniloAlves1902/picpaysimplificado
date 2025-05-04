@@ -8,6 +8,8 @@ import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
+import org.hibernate.validator.constraints.br.CNPJ;
+import org.hibernate.validator.constraints.br.CPF;
 
 
 import java.math.BigDecimal;
@@ -28,12 +30,10 @@ public class User {
     private String lastName;
 
     @NotBlank
-    @Column(unique = true)
     private String document;
 
     @NotBlank
     @Email
-    @Column(unique = true)
     private String email;
 
     @NotBlank

@@ -1,6 +1,8 @@
 package com.danilo.minipicpay.repositories;
 
 import com.danilo.minipicpay.entities.user.User;
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotBlank;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
@@ -20,4 +22,8 @@ public interface UserRepository extends JpaRepository<User, Long> {
      * @return Um {@link Optional} contendo o usuário, se encontrado.
      */
     Optional<User> findByDocument(String document);
+
+    boolean existsByEmail(@NotBlank @Email String email);
+
+    boolean existsByPhoneNumber(@NotBlank String phoneNumber);
 }

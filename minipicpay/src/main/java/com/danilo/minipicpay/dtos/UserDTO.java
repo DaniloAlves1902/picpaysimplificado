@@ -4,6 +4,7 @@ import com.danilo.minipicpay.entities.enums.Gender;
 import com.danilo.minipicpay.entities.enums.UserStatus;
 import com.danilo.minipicpay.entities.enums.UserType;
 
+import com.danilo.minipicpay.entities.user.User;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
@@ -97,5 +98,24 @@ public record UserDTO(
          * Tipo de usuário (ex: ADMIN, COMUM). Este campo pode ser nulo.
          */
         UserType userType
+
+
 ) {
+
+        public static UserDTO fromEntity(User user) {
+                return new UserDTO(
+                        user.getId(),
+                        user.getFirstName(),
+                        user.getLastName(),
+                        user.getDocument(),
+                        user.getEmail(),
+                        user.getPhoneNumber(),
+                        user.getGender(),
+                        user.getNationality(),
+                        user.getAddress(),
+                        user.getUserStatus(),
+                        user.getBalance(),
+                        user.getUserType()
+                );
+        }
 }

@@ -3,7 +3,11 @@ package com.danilo.minipicpay.controllers.user;
 import com.danilo.minipicpay.dtos.UserDTO;
 import com.danilo.minipicpay.entities.user.User;
 import com.danilo.minipicpay.services.user.UserService;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.HttpStatusCode;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -27,7 +31,7 @@ public class UserController {
      * @responseStatus 200 OK
      */
     @GetMapping
-    public List<User> listAll() {
+    public List<UserDTO> listAll() {
         return userService.findAll();
     }
 
@@ -61,7 +65,7 @@ public class UserController {
 
     /**
      * Endpoint para criar um novo usuário.
-     * 
+     *
      * @param dataUser Dados do novo usuário a ser criado.
      * @return Usuário criado com sucesso.
      * @apiNote Cria um novo usuário com base nos dados fornecidos.
@@ -69,8 +73,9 @@ public class UserController {
      * @responseStatus 201 Created
      */
     @PostMapping
-    public User createUser(@RequestBody UserDTO dataUser) {
-        return userService.createUser(dataUser);
+    public ResponseEntity<User> createUser(@RequestBody @Valid User dataUser) {
+        User savedUser = userService.createUser(dataUser);
+        return ResponseEntity.status(HttpStatus.CREATED).body(savedUser);
     }
 
     /**
