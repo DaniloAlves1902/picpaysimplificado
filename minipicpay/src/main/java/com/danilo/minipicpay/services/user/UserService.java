@@ -1,7 +1,6 @@
 package com.danilo.minipicpay.services.user;
 
 import com.danilo.minipicpay.dtos.UserDTO;
-import com.danilo.minipicpay.entities.enums.UserStatus;
 import com.danilo.minipicpay.entities.user.User;
 import com.danilo.minipicpay.exceptions.*;
 import com.danilo.minipicpay.repositories.UserRepository;

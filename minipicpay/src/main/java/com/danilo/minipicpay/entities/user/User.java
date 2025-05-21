@@ -7,10 +7,6 @@ import com.danilo.minipicpay.entities.enums.UserType;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.NotNull;
-import org.hibernate.validator.constraints.br.CNPJ;
-import org.hibernate.validator.constraints.br.CPF;
-
 
 import java.math.BigDecimal;
 
@@ -192,4 +188,5 @@ public class User {
     public void setUserType(UserType userType) {
         this.userType = userType;
     }
+
 }

@@ -52,7 +52,7 @@ public class TransactionService {
         newTransaction.setReciver(reciver);
         newTransaction.setTimestamp(LocalDateTime.now());
         newTransaction.setDescription(transaction.description());
-        newTransaction.setStatus(TransactionStatus.SUCCESSFUL);
+        newTransaction.setStatus(TransactionStatus.PENDING);
 
         sender.setBalance(sender.getBalance().subtract(transaction.amount()));
         reciver.setBalance(reciver.getBalance().add(transaction.amount()));
